@@ -15,9 +15,26 @@ struct ContentView: View {
     var body: some View {
 		ScrollView(showsIndicators: false) {
 			VStack(alignment: .center) {
-				Text(music.title)
-					.imageScale(.large)
-					.foregroundColor(.accentColor)
+				HStack(alignment: .center) {
+					Image(music.cover)
+						.resizable()
+						.scaledToFit()
+						.frame(height: 80)
+						.cornerRadius(10)
+						.shadow(radius: 10)
+					VStack(alignment: .leading, spacing: 3) {
+						Text(music.title)
+							.imageScale(.large)
+							.font(.title2)
+							.fontWeight(.semibold)
+						Text(music.artist)
+							.opacity(0.8)
+					}
+					.padding(.leading, 8)
+					Spacer()
+					Image(systemName: "ellipsis.circle.fill")
+						.font(.title2)
+				}
 				ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, row in
 					Text(row)
 						.font(.title)
@@ -50,12 +67,16 @@ struct ContentView_Previews: PreviewProvider {
 
 struct Music: Identifiable, Hashable {
 	var id: String { title }
+	let artist: String
+	let cover: String
 	let title: String
 	let lyrics: [String]
 }
 
 extension Music {
 	static let musicSample: Music = Music(
+		artist: "Eminem",
+		cover: "eminemCover",
 		title: "The Real Slim Shady",
 		lyrics:
 				[
