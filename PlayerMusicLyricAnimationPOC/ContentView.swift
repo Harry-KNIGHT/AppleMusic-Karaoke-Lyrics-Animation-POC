@@ -13,45 +13,43 @@ struct ContentView: View {
 	let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
-		ScrollView(showsIndicators: false) {
-			VStack(alignment: .center) {
-				HStack(alignment: .center) {
-					Image(music.cover)
-						.resizable()
-						.scaledToFit()
-						.frame(height: 80)
-						.cornerRadius(10)
-						.shadow(radius: 10)
-					VStack(alignment: .leading, spacing: 3) {
-						Text(music.title)
-							.imageScale(.large)
-							.font(.title2)
-							.fontWeight(.semibold)
-						Text(music.artist)
-							.opacity(0.8)
+		ZStack {
+			LinearGradient(
+				colors: [
+					Color(red: 28/255, green: 28/255, blue: 28/255),
+					Color(red: 43/255, green: 43/255, blue: 43/255),
+					Color(red: 71/255, green: 71/255, blue: 71/255)],
+				startPoint: .topLeading,
+				endPoint: .bottomTrailing
+			)
+			.edgesIgnoringSafeArea(.all)
+
+			VStack(alignment: .leading, spacing: 0) {
+				HeadBandMusic(music: music)
+					.padding(.horizontal)
+
+				ScrollView(.vertical, showsIndicators: false) {
+					VStack(alignment: .leading, spacing: 15) {
+						ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, row in
+							Text(row)
+								.font(.largeTitle)
+								.foregroundColor(index == count ? .white : .secondary)
+								.fontDesign(.default)
+								.fontWeight(.heavy)
+								.multilineTextAlignment(.leading)
+								.padding(.vertical, 7)
+						}
 					}
-					.padding(.leading, 8)
-					Spacer()
-					Image(systemName: "ellipsis.circle.fill")
-						.font(.title2)
 				}
-				ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, row in
-					Text(row)
-						.font(.title)
-						.foregroundColor(index == count ? .red : .black)
-						.fontDesign(.rounded)
-						.fontWeight(.heavy)
-						.multilineTextAlignment(.center)
-						.padding(.vertical, 7)
-				}
+				.padding(.horizontal)
 			}
-			.padding()
-		}
-		.onReceive(timer) { _ in
-			if count < music.lyrics.count - 1 {
-				count += 1
-			} else {
-				count = 0
+			.edgesIgnoringSafeArea(.bottom)
+			.onReceive(timer) { _ in
+				if count < music.lyrics.count - 1 {
+					count += 1
+				} else {
+					count = 0
+				}
 			}
 		}
     }
@@ -81,11 +79,13 @@ extension Music {
 		lyrics:
 			[
 				"May I have your attention, please ?",
-				"May I have your attention, please ?\n Will the real Slim Shady please stand up ?",
+				"May I have your attention, please ?",
+				"Will the real Slim Shady please stand up ?",
 				"I repeat, will the real Slim Shady please stand up ?",
 				"We're gonna have a problem here...",
 				"May I have your attention, please ?",
-				"May I have your attention, please ?\n Will the real Slim Shady please stand up ?",
+				"May I have your attention, please ?",
+				"Will the real Slim Shady please stand up ?",
 				"I repeat, will the real Slim Shady please stand up ?",
 				"We're gonna have a problem here..."
 			]
@@ -93,4 +93,28 @@ extension Music {
 }
 
 
-
+struct HeadBandMusic: View {
+	let music: Music
+	var body: some View {
+		HStack(alignment: .center) {
+			Image(music.cover)
+				.resizable()
+				.scaledToFit()
+				.frame(height: 80)
+				.cornerRadius(10)
+				.shadow(radius: 10)
+			VStack(alignment: .leading, spacing: 3) {
+				Text(music.title)
+					.imageScale(.large)
+					.font(.title2)
+					.fontWeight(.semibold)
+				Text(music.artist)
+					.opacity(0.8)
+			}
+			.padding(.leading, 8)
+			Spacer()
+			Image(systemName: "ellipsis.circle.fill")
+				.font(.title2)
+		}
+	}
+}
