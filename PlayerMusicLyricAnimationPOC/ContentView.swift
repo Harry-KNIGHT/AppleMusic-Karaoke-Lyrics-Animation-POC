@@ -25,6 +25,15 @@ struct ContentView: View {
 			.edgesIgnoringSafeArea(.all)
 
 			VStack(alignment: .leading, spacing: 0) {
+				HStack {
+					Spacer()
+					RoundedRectangle(cornerRadius: 10)
+						.fill(Color.secondary)
+						.frame(width: 43, height: 5.5)
+					Spacer()
+				}
+				.padding(.bottom, 25)
+				.padding(.top, 10)
 				HeadBandMusic(music: music)
 					.padding(.horizontal)
 
@@ -41,7 +50,7 @@ struct ContentView: View {
 						}
 					}
 				}
-				.padding(.horizontal)
+				.padding(.horizontal, 20)
 			}
 			.edgesIgnoringSafeArea(.bottom)
 			.onReceive(timer) { _ in
@@ -100,7 +109,7 @@ struct HeadBandMusic: View {
 			Image(music.cover)
 				.resizable()
 				.scaledToFit()
-				.frame(height: 80)
+				.frame(height: 65)
 				.cornerRadius(10)
 				.shadow(radius: 10)
 			VStack(alignment: .leading, spacing: 3) {
