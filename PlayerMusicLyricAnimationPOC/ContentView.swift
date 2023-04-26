@@ -38,7 +38,7 @@ struct ContentView: View {
 					.padding(.horizontal)
 
 				ScrollView(.vertical, showsIndicators: false) {
-					VStack(alignment: .leading, spacing: 15) {
+					VStack(alignment: .leading) {
 						ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, row in
 							Text(row)
 								.font(.largeTitle)
@@ -46,9 +46,19 @@ struct ContentView: View {
 								.fontDesign(.default)
 								.fontWeight(.heavy)
 								.multilineTextAlignment(.leading)
-								.padding(.vertical, 7)
+								.padding(.vertical, 15)
 						}
+						
+						VStack(alignment: .leading, spacing: 5) {
+							Text("Written By: Marshall Bruce Mathers,")
+							Text(music.artist)
+						}
+						.padding(.bottom, 100)
+						.font(.title2)
+						.fontWeight(.bold)
+						.foregroundColor(.secondary)
 					}
+
 				}
 				.padding(.horizontal, 20)
 			}
