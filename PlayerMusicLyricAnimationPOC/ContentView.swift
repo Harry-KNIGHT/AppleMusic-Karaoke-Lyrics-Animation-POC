@@ -37,30 +37,31 @@ struct ContentView: View {
 				HeadBandMusic(music: music)
 					.padding(.horizontal)
 
-				ScrollView(.vertical, showsIndicators: false) {
-					VStack(alignment: .leading) {
-						ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, row in
-							Text(row)
-								.font(.largeTitle)
-								.foregroundColor(index == count ? .white : .secondary)
-								.fontDesign(.default)
-								.fontWeight(.heavy)
-								.multilineTextAlignment(.leading)
-								.padding(.vertical, 15)
-						}
-						
-						VStack(alignment: .leading, spacing: 5) {
-							Text("Written By: Marshall Bruce Mathers,")
-							Text(music.artist)
-						}
-						.padding(.bottom, 100)
-						.font(.title2)
-						.fontWeight(.bold)
-						.foregroundColor(.secondary)
-					}
+				ScrollViewReader { proxy in
+					ScrollView(.vertical, showsIndicators: false) {
+						VStack(alignment: .leading) {
+							ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, row in
+								Text(row)
+									.font(.largeTitle)
+									.foregroundColor(index == count ? .white : .secondary)
+									.fontDesign(.default)
+									.fontWeight(.heavy)
+									.multilineTextAlignment(.leading)
+									.padding(.vertical, 15)
+							}
 
+							VStack(alignment: .leading, spacing: 5) {
+								Text("Written By: Marshall Bruce Mathers,")
+								Text(music.artist)
+							}
+							.padding(.bottom, 100)
+							.font(.title2)
+							.fontWeight(.bold)
+							.foregroundColor(.secondary)
+						}
+					}
+					.padding(.horizontal, 20)
 				}
-				.padding(.horizontal, 20)
 			}
 			.edgesIgnoringSafeArea(.bottom)
 			.onReceive(timer) { _ in
