@@ -46,7 +46,7 @@ struct LyricsPlayerView: View {
 							}
 							.onChange(of: self.scrollToId) { scrollId in
 								withAnimation {
-									proxy.scrollTo(scrollId)
+									proxy.scrollTo(scrollId, anchor: .top)
 								}
 							}
 
