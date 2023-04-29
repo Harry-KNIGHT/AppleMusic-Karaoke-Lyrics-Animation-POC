@@ -18,15 +18,9 @@ struct LyricsPlayerView: View {
 				.edgesIgnoringSafeArea(.all)
 
 			VStack(alignment: .leading, spacing: 0) {
-				HStack {
-					Spacer()
-					RoundedRectangle(cornerRadius: 10)
-						.fill(Color.secondary)
-						.frame(width: 43, height: 5.5)
-					Spacer()
-				}
-				.padding(.bottom, 25)
-				.padding(.top, 10)
+				SheetIslandView()
+					.padding(.bottom, 25)
+					.padding(.top, 10)
 				HeadBandView(music: music)
 					.padding(.horizontal)
 
@@ -38,6 +32,7 @@ struct LyricsPlayerView: View {
 									.id(index)
 									.font(.largeTitle)
 									.foregroundColor(.white.opacity(index == count ? 1 : 0.5))
+									.blur(radius: index == count ? 0 : 1)
 									.fontDesign(.default)
 									.fontWeight(.heavy)
 									.multilineTextAlignment(.leading)
@@ -60,7 +55,7 @@ struct LyricsPlayerView: View {
 				if count < music.lyrics.count - 1 {
 					count += 1
 				} else {
-					count = 0
+					count = music.lyrics.startIndex
 				}
 			}
 		}
