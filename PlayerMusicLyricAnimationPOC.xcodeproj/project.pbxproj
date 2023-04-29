@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C04E81A29FD14E500CE33AD /* HeadBandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C04E81929FD14E500CE33AD /* HeadBandView.swift */; };
+		3C04E81E29FD153E00CE33AD /* CopyrightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C04E81D29FD153E00CE33AD /* CopyrightView.swift */; };
+		3C04E82029FD158400CE33AD /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C04E81F29FD158400CE33AD /* Music.swift */; };
 		3CE4897129F86540004C624F /* PlayerMusicLyricAnimationPOCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE4897029F86540004C624F /* PlayerMusicLyricAnimationPOCApp.swift */; };
 		3CE4897329F86540004C624F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE4897229F86540004C624F /* ContentView.swift */; };
 		3CE4897529F86541004C624F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CE4897429F86541004C624F /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C04E81929FD14E500CE33AD /* HeadBandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadBandView.swift; sourceTree = "<group>"; };
+		3C04E81D29FD153E00CE33AD /* CopyrightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightView.swift; sourceTree = "<group>"; };
+		3C04E81F29FD158400CE33AD /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		3CE4896D29F86540004C624F /* PlayerMusicLyricAnimationPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayerMusicLyricAnimationPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE4897029F86540004C624F /* PlayerMusicLyricAnimationPOCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMusicLyricAnimationPOCApp.swift; sourceTree = "<group>"; };
 		3CE4897229F86540004C624F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +38,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C04E82129FD159B00CE33AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C04E81F29FD158400CE33AD /* Music.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3C04E82229FD15A800CE33AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3C04E82429FD15CD00CE33AD /* Screen */,
+				3C04E82329FD15B700CE33AD /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3C04E82329FD15B700CE33AD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3C04E81929FD14E500CE33AD /* HeadBandView.swift */,
+				3C04E81D29FD153E00CE33AD /* CopyrightView.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3C04E82429FD15CD00CE33AD /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				3CE4897229F86540004C624F /* ContentView.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
 		3CE4896429F86540004C624F = {
 			isa = PBXGroup;
 			children = (
@@ -52,7 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				3CE4897029F86540004C624F /* PlayerMusicLyricAnimationPOCApp.swift */,
-				3CE4897229F86540004C624F /* ContentView.swift */,
+				3C04E82229FD15A800CE33AD /* Views */,
+				3C04E82129FD159B00CE33AD /* Model */,
 				3CE4897429F86541004C624F /* Assets.xcassets */,
 				3CE4897629F86541004C624F /* Preview Content */,
 			);
@@ -138,6 +179,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CE4897329F86540004C624F /* ContentView.swift in Sources */,
+				3C04E81A29FD14E500CE33AD /* HeadBandView.swift in Sources */,
+				3C04E82029FD158400CE33AD /* Music.swift in Sources */,
+				3C04E81E29FD153E00CE33AD /* CopyrightView.swift in Sources */,
 				3CE4897129F86540004C624F /* PlayerMusicLyricAnimationPOCApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

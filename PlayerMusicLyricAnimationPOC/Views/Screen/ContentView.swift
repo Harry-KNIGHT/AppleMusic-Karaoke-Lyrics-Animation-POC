@@ -35,7 +35,7 @@ struct ContentView: View {
 				}
 				.padding(.bottom, 25)
 				.padding(.top, 10)
-				HeadBandMusicView(music: music)
+				HeadBandView(music: music)
 					.padding(.horizontal)
 
 				ScrollViewReader { proxy in
@@ -84,88 +84,4 @@ struct ContentView_Previews: PreviewProvider {
 		ContentView(music: .musicSample)
 
     }
-}
-
-// MARK: - Music model
-
-struct Music: Identifiable, Hashable {
-	var id: String { title }
-	let artist: String
-	let cover: String
-	let title: String
-	let lyrics: [String]
-}
-
-// MARK: Music data
-
-extension Music {
-	static let musicSample: Music = Music(
-		artist: "Eminem",
-		cover: "eminemCover",
-		title: "The Real Slim Shady",
-		lyrics:
-			[
-				"May I have your attention, please ?",
-				"May I have your attention, please ?",
-				"Will the real Slim Shady please stand up ?",
-				"I repeat, will the real Slim Shady please stand up ?",
-				"We're gonna have a problem here...",
-				"May I have your attention, please ?",
-				"May I have your attention, please ?",
-				"Will the real Slim Shady please stand up ?",
-				"I repeat, will the real Slim Shady please stand up ?",
-				"We're gonna have a problem here..."
-			]
-	)
-}
-
-// MARK: - Headband music view
-
-struct HeadBandMusicView: View {
-	let music: Music
-	var body: some View {
-		HStack(alignment: .center) {
-			Image(music.cover)
-				.resizable()
-				.scaledToFit()
-				.frame(height: 65)
-				.cornerRadius(10)
-				.shadow(radius: 10)
-			VStack(alignment: .leading, spacing: 3) {
-				Text(music.title)
-					.imageScale(.large)
-					.font(.title2)
-					.fontWeight(.semibold)
-				Text(music.artist)
-					.opacity(0.8)
-			}
-			.padding(.leading, 8)
-			Spacer()
-			Image(systemName: "ellipsis.circle.fill")
-				.font(.title2)
-		}
-		.foregroundColor(.white)
-	}
-}
-
-// MARK: - Copyright view
-
-struct CopyrightView: View {
-	let music: Music
-	var body: some View {
-		VStack(alignment: .leading, spacing: 5) {
-			HStack(alignment: .bottom) {
-				Text("Written By:")
-					.fontWeight(.bold)
-
-				Text("Marshall Mathers,")
-					.font(.title2)
-					.fontWeight(.semibold)
-			}
-			Text(music.artist)
-		}
-		.padding(.bottom, 100)
-		.font(.title2)
-		.foregroundColor(.secondary)
-	}
 }
