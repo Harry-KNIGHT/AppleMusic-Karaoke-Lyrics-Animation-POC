@@ -50,17 +50,12 @@ struct ContentView: View {
 									.fontWeight(.heavy)
 									.multilineTextAlignment(.leading)
 									.padding(.vertical, 15)
-									.onChange(of: index) { _ in
-										withAnimation {
-											proxy.scrollTo(index)
-										}
-									}
 							}
-//							.onChange(of: self.scrollToId) { scrollId in
-//								withAnimation {
-//									proxy.scrollTo(index)
-//								}
-//							}
+							.onChange(of: self.scrollToId) { scrollId in
+								withAnimation {
+									proxy.scrollTo(scrollId)
+								}
+							}
 
 							CopyrightView(music: music)
 						}
