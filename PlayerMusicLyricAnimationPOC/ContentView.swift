@@ -34,7 +34,7 @@ struct ContentView: View {
 				}
 				.padding(.bottom, 25)
 				.padding(.top, 10)
-				HeadBandMusic(music: music)
+				HeadBandMusicView(music: music)
 					.padding(.horizontal)
 
 				ScrollViewReader { proxy in
@@ -43,21 +43,15 @@ struct ContentView: View {
 							ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, row in
 								Text(row)
 									.font(.largeTitle)
-									.foregroundColor(index == count ? .white : .secondary)
+									.foregroundColor(index == count ? .white : .white.opacity(0.5))
 									.fontDesign(.default)
 									.fontWeight(.heavy)
 									.multilineTextAlignment(.leading)
 									.padding(.vertical, 15)
+									.id(index)
 							}
 
-							VStack(alignment: .leading, spacing: 5) {
-								Text("Written By: Marshall Bruce Mathers,")
-								Text(music.artist)
-							}
-							.padding(.bottom, 100)
-							.font(.title2)
-							.fontWeight(.bold)
-							.foregroundColor(.secondary)
+							CopyrightView(music: music)
 						}
 					}
 					.padding(.horizontal, 20)
@@ -75,6 +69,8 @@ struct ContentView: View {
     }
 }
 
+// MARK: Preview
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
 		ContentView(music: .musicSample)
@@ -82,6 +78,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+// MARK: - Music model
 
 struct Music: Identifiable, Hashable {
 	var id: String { title }
@@ -90,6 +87,8 @@ struct Music: Identifiable, Hashable {
 	let title: String
 	let lyrics: [String]
 }
+
+// MARK: Music data
 
 extension Music {
 	static let musicSample: Music = Music(
@@ -112,8 +111,9 @@ extension Music {
 	)
 }
 
+// MARK: - Headband music view
 
-struct HeadBandMusic: View {
+struct HeadBandMusicView: View {
 	let music: Music
 	var body: some View {
 		HStack(alignment: .center) {
@@ -136,5 +136,28 @@ struct HeadBandMusic: View {
 			Image(systemName: "ellipsis.circle.fill")
 				.font(.title2)
 		}
+		.foregroundColor(.white)
+	}
+}
+
+// MARK: - Copyright view
+
+struct CopyrightView: View {
+	let music: Music
+	var body: some View {
+		VStack(alignment: .leading, spacing: 5) {
+			HStack(alignment: .bottom) {
+				Text("Written By:")
+					.fontWeight(.bold)
+
+				Text("Marshall Mathers,")
+					.font(.title2)
+					.fontWeight(.semibold)
+			}
+			Text(music.artist)
+		}
+		.padding(.bottom, 100)
+		.font(.title2)
+		.foregroundColor(.secondary)
 	}
 }
