@@ -10,7 +10,7 @@ import SwiftUI
 struct HeadBandView: View {
 	let music: Music
     var body: some View {
-		HStack(alignment: .center) {
+		HStack(alignment: .center, spacing: 8) {
 			Image(music.cover)
 				.resizable()
 				.scaledToFit()
@@ -25,7 +25,6 @@ struct HeadBandView: View {
 				Text(music.artist)
 					.opacity(0.8)
 			}
-			.padding(.leading, 8)
 			Spacer()
 			Image(systemName: "ellipsis.circle.fill")
 				.font(.title2)
@@ -37,5 +36,7 @@ struct HeadBandView: View {
 struct HeadBandView_Previews: PreviewProvider {
     static var previews: some View {
 		HeadBandView(music: .musicSample)
+			.background(.black)
+			.previewLayout(.sizeThatFits)
     }
 }

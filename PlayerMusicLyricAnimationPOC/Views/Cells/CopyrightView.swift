@@ -21,7 +21,6 @@ struct CopyrightView: View {
 			}
 			Text(music.artist)
 		}
-		.padding(.bottom, 100)
 		.font(.title2)
 		.foregroundColor(.secondary)
     }
@@ -30,5 +29,6 @@ struct CopyrightView: View {
 struct CopyrightView_Previews: PreviewProvider {
     static var previews: some View {
 		CopyrightView(music: .musicSample)
+			.previewLayout(.sizeThatFits)
     }
 }
