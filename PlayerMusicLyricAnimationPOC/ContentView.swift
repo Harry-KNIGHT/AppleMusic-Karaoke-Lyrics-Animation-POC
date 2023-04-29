@@ -11,6 +11,7 @@ struct ContentView: View {
 	let music: Music
 	@State private var count = 0
 	let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+	@State private var scrollToId: Int = 0
 
     var body: some View {
 		ZStack {
@@ -42,14 +43,24 @@ struct ContentView: View {
 						VStack(alignment: .leading) {
 							ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, row in
 								Text(row)
+									.id(index)
 									.font(.largeTitle)
-									.foregroundColor(index == count ? .white : .white.opacity(0.5))
+									.foregroundColor(.white.opacity(index == count ? 1 : 0.5))
 									.fontDesign(.default)
 									.fontWeight(.heavy)
 									.multilineTextAlignment(.leading)
 									.padding(.vertical, 15)
-									.id(index)
+									.onChange(of: index) { _ in
+										withAnimation {
+											proxy.scrollTo(index)
+										}
+									}
 							}
+//							.onChange(of: self.scrollToId) { scrollId in
+//								withAnimation {
+//									proxy.scrollTo(index)
+//								}
+//							}
 
 							CopyrightView(music: music)
 						}
@@ -60,8 +71,10 @@ struct ContentView: View {
 			.edgesIgnoringSafeArea(.bottom)
 			.onReceive(timer) { _ in
 				if count < music.lyrics.count - 1 {
+					scrollToId += 1
 					count += 1
 				} else {
+					scrollToId = 0
 					count = 0
 				}
 			}
