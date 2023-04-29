@@ -11,9 +11,8 @@ struct LyricsPlayerView: View {
 	let music: Music
 	@State private var count = 0
 	let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-	@State private var scrollToId: Int = 0
 
-    var body: some View {
+	var body: some View {
 		ZStack {
 			PlayerBackgroundColor()
 				.edgesIgnoringSafeArea(.all)
@@ -44,9 +43,9 @@ struct LyricsPlayerView: View {
 									.multilineTextAlignment(.leading)
 									.padding(.vertical, 15)
 							}
-							.onChange(of: self.scrollToId) { scrollId in
+							.onChange(of: self.count) { count in
 								withAnimation {
-									proxy.scrollTo(scrollId, anchor: .top)
+									proxy.scrollTo(count, anchor: .top)
 								}
 							}
 
@@ -59,22 +58,20 @@ struct LyricsPlayerView: View {
 			.edgesIgnoringSafeArea(.bottom)
 			.onReceive(timer) { _ in
 				if count < music.lyrics.count - 1 {
-					scrollToId += 1
 					count += 1
 				} else {
-					scrollToId = 0
 					count = 0
 				}
 			}
 		}
-    }
+	}
 }
 
 // MARK: Preview
 
 struct LyricsPlayerView_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		LyricsPlayerView(music: .musicSample)
 
-    }
+	}
 }
