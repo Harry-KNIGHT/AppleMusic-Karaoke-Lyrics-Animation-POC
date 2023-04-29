@@ -12,7 +12,8 @@ struct SheetIslandView: View {
 		HStack {
 			Spacer()
 			RoundedRectangle(cornerRadius: 10)
-				.fill(Color.secondary)
+				.fill(Color.white)
+				.opacity(0.5)
 				.frame(width: 43, height: 5.5)
 			Spacer()
 		}
