@@ -27,8 +27,8 @@ struct LyricsPlayerView: View {
 				ScrollViewReader { proxy in
 					ScrollView(.vertical, showsIndicators: false) {
 						VStack(alignment: .leading) {
-							ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, row in
-								Text(row)
+							ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, lyric in
+								Text(lyric)
 									.id(index)
 									.font(.largeTitle)
 									.foregroundColor(.white.opacity(index == count ? 1 : 0.5))
