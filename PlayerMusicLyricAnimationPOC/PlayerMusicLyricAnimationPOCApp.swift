@@ -11,7 +11,7 @@ import SwiftUI
 struct PlayerMusicLyricAnimationPOCApp: App {
     var body: some Scene {
         WindowGroup {
-			ContentView(music: .musicSample)
+			LyricsPlayerView(music: .musicSample)
         }
     }
 }
