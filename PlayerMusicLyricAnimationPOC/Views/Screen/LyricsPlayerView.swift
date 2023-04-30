@@ -30,6 +30,7 @@ struct LyricsPlayerView: View {
 							ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, lyric in
 								Text(lyric)
 									.id(index)
+									.scaleEffect(index == count ? 1.01 : 1)
 									.font(.largeTitle)
 									.foregroundColor(.white.opacity(index == count ? 1 : 0.5))
 									.blur(radius: index == count ? 0 : 1)
