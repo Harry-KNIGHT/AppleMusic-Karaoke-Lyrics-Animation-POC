@@ -49,7 +49,7 @@ struct LyricsPlayerView: View {
 //									)
 							}
 							.offset(y: isChangingLyric ? 35 : 60)
-	
+
 							.onChange(of: self.count) { count in
 								withAnimation {
 									isChangingLyric.toggle()
@@ -57,8 +57,9 @@ struct LyricsPlayerView: View {
 								}
 							}
 
-							CopyrightView(music: music)
 						}
+//						CopyrightView(music: music)
+						EmptyBottomView()
 					}
 					.padding(.horizontal, 20)
 				}
