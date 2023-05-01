@@ -52,20 +52,20 @@ struct LyricsPlayerView: View {
 
 							.onChange(of: self.count) { count in
 								withAnimation {
-									isChangingLyric.toggle()
+									isChangingLyric = false
 									proxy.scrollTo(count, anchor: .top)
 								}
 							}
 							EmptyBottomView(music: music)
 						}
+						.padding(.horizontal, 20)
 					}
-					.padding(.leading, 20)
 				}
 			}
 			.edgesIgnoringSafeArea(.bottom)
 			.onReceive(timer) { _ in
 				if count < music.lyrics.count - 1 {
-					isChangingLyric.toggle()
+					isChangingLyric = true
 					count += 1
 				} else {
 					isChangingLyric.toggle()
