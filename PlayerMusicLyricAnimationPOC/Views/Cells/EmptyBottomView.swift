@@ -12,7 +12,7 @@ struct EmptyBottomView: View {
     var body: some View {
 		ZStack(alignment: .topLeading) {
 			Rectangle()
-				.frame(maxWidth: .infinity, minHeight: 2000)
+				.frame(maxWidth: .infinity, minHeight: UIScreen.main.bounds.size.height)
 				.foregroundColor(Color.red)
 				.opacity(0)
 			CopyrightView(music: music)
