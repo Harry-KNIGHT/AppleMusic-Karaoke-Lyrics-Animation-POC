@@ -27,7 +27,7 @@ struct LyricsPlayerView: View {
 					.padding(.horizontal)
 
 				ScrollViewReader { proxy in
-					ScrollView(.vertical, showsIndicators: false) {
+					ScrollView(.vertical, showsIndicators: true) {
 						VStack(alignment: .leading) {
 							ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, lyric in
 								Text(lyric)
@@ -47,7 +47,7 @@ struct LyricsPlayerView: View {
 //											initialVelocity: 20
 //										)
 //									)
-							}
+								}
 							.offset(y: isChangingLyric ? 35 : 60)
 
 							.onChange(of: self.count) { count in
@@ -59,7 +59,7 @@ struct LyricsPlayerView: View {
 							EmptyBottomView(music: music)
 						}
 					}
-					.padding(.horizontal, 20)
+					.padding(.leading, 20)
 				}
 			}
 			.edgesIgnoringSafeArea(.bottom)
