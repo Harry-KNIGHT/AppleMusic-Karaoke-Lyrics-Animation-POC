@@ -40,11 +40,16 @@ struct LyricsPlayerView: View {
 									.fontWeight(.heavy)
 									.multilineTextAlignment(.leading)
 									.padding(.vertical, 15)
-									.animation(.interpolatingSpring(stiffness: 350, damping: 5, initialVelocity: 6))
+//									.animation(
+//										.interpolatingSpring(
+//											stiffness: 200,
+//											damping: 10,
+//											initialVelocity: 20
+//										)
+//									)
 							}
-
-							.offset(y: isChangingLyric ? 0 : 40)
-
+							.offset(y: isChangingLyric ? 35 : 60)
+	
 							.onChange(of: self.count) { count in
 								withAnimation {
 									isChangingLyric.toggle()
