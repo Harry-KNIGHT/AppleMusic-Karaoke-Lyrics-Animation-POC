@@ -8,16 +8,21 @@
 import SwiftUI
 
 struct EmptyBottomView: View {
+	let music: Music
     var body: some View {
-        Rectangle()
-			.frame(maxWidth: .infinity, minHeight: 2000)
-			.foregroundColor(Color.red)
-			.opacity(0)
+		ZStack(alignment: .topLeading) {
+			Rectangle()
+				.frame(maxWidth: .infinity, minHeight: 2000)
+				.foregroundColor(Color.red)
+				.opacity(0)
+			CopyrightView(music: music)
+				.offset(y: 50)
+		}
     }
 }
 
 struct EmptyBottomView_Previews: PreviewProvider {
     static var previews: some View {
-		EmptyBottomView()
+		EmptyBottomView(music:  .musicSample)
     }
 }

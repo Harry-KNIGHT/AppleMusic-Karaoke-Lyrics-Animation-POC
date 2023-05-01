@@ -56,10 +56,8 @@ struct LyricsPlayerView: View {
 									proxy.scrollTo(count, anchor: .top)
 								}
 							}
-
+							EmptyBottomView(music: music)
 						}
-//						CopyrightView(music: music)
-						EmptyBottomView()
 					}
 					.padding(.horizontal, 20)
 				}
