@@ -10,7 +10,9 @@ import SwiftUI
 struct LyricsPlayerView: View {
 	let music: Music
 	@State private var count = 0
-	let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+	@State private var isChangingLyric: Bool = false
+
+	let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
 
 	var body: some View {
 		ZStack {
@@ -25,11 +27,12 @@ struct LyricsPlayerView: View {
 					.padding(.horizontal)
 
 				ScrollViewReader { proxy in
-					ScrollView(.vertical, showsIndicators: false) {
+					ScrollView(.vertical, showsIndicators: true) {
 						VStack(alignment: .leading) {
 							ForEach(Array(music.lyrics.enumerated()), id: \.0) { index, lyric in
 								Text(lyric)
 									.id(index)
+									.scaleEffect(index == count ? 1.0 : 1)
 									.font(.largeTitle)
 									.foregroundColor(.white.opacity(index == count ? 1 : 0.5))
 									.blur(radius: index == count ? 0 : 1)
@@ -37,24 +40,35 @@ struct LyricsPlayerView: View {
 									.fontWeight(.heavy)
 									.multilineTextAlignment(.leading)
 									.padding(.vertical, 15)
-							}
+//									.animation(
+//										.interpolatingSpring(
+//											stiffness: 200,
+//											damping: 10,
+//											initialVelocity: 20
+//										)
+//									)
+								}
+							.offset(y: isChangingLyric ? 35 : 60)
+
 							.onChange(of: self.count) { count in
 								withAnimation {
+									isChangingLyric.toggle()
 									proxy.scrollTo(count, anchor: .top)
 								}
 							}
-
-							CopyrightView(music: music)
+							EmptyBottomView(music: music)
 						}
 					}
-					.padding(.horizontal, 20)
+					.padding(.leading, 20)
 				}
 			}
 			.edgesIgnoringSafeArea(.bottom)
 			.onReceive(timer) { _ in
 				if count < music.lyrics.count - 1 {
+					isChangingLyric.toggle()
 					count += 1
 				} else {
+					isChangingLyric.toggle()
 					count = music.lyrics.startIndex
 				}
 			}

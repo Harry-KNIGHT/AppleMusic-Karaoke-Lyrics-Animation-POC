@@ -12,6 +12,7 @@
 		3C04E82029FD158400CE33AD /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C04E81F29FD158400CE33AD /* Music.swift */; };
 		3C04E82629FD19BB00CE33AD /* MusicMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C04E82529FD19BB00CE33AD /* MusicMock.swift */; };
 		3C04E82929FD1ADD00CE33AD /* PlayerBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C04E82829FD1ADD00CE33AD /* PlayerBackgroundColor.swift */; };
+		3C0877CF29FFA409005E9282 /* EmptyBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0877CE29FFA409005E9282 /* EmptyBottomView.swift */; };
 		3CCD31D529FD2B78008BBB06 /* SheetIslandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCD31D429FD2B78008BBB06 /* SheetIslandView.swift */; };
 		3CE4897129F86540004C624F /* PlayerMusicLyricAnimationPOCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE4897029F86540004C624F /* PlayerMusicLyricAnimationPOCApp.swift */; };
 		3CE4897329F86540004C624F /* LyricsPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE4897229F86540004C624F /* LyricsPlayerView.swift */; };
@@ -25,6 +26,7 @@
 		3C04E81F29FD158400CE33AD /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		3C04E82529FD19BB00CE33AD /* MusicMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMock.swift; sourceTree = "<group>"; };
 		3C04E82829FD1ADD00CE33AD /* PlayerBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBackgroundColor.swift; sourceTree = "<group>"; };
+		3C0877CE29FFA409005E9282 /* EmptyBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBottomView.swift; sourceTree = "<group>"; };
 		3CCD31D429FD2B78008BBB06 /* SheetIslandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetIslandView.swift; sourceTree = "<group>"; };
 		3CE4896D29F86540004C624F /* PlayerMusicLyricAnimationPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayerMusicLyricAnimationPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE4897029F86540004C624F /* PlayerMusicLyricAnimationPOCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMusicLyricAnimationPOCApp.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				3C04E81929FD14E500CE33AD /* HeadBandView.swift */,
+				3C0877CE29FFA409005E9282 /* EmptyBottomView.swift */,
 				3CCD31D429FD2B78008BBB06 /* SheetIslandView.swift */,
 				3C04E81D29FD153E00CE33AD /* CopyrightView.swift */,
 			);
@@ -211,6 +214,7 @@
 				3C04E81E29FD153E00CE33AD /* CopyrightView.swift in Sources */,
 				3CE4897129F86540004C624F /* PlayerMusicLyricAnimationPOCApp.swift in Sources */,
 				3CCD31D529FD2B78008BBB06 /* SheetIslandView.swift in Sources */,
+				3C0877CF29FFA409005E9282 /* EmptyBottomView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
