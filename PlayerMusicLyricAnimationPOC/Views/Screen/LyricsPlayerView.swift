@@ -12,6 +12,8 @@ struct LyricsPlayerView: View {
     @State private var count = 0
     @State private var isChangingLyric: Bool = false
 
+    //The idea is to assign to each lyrics a boolean which values are toggled
+    //successively with a delay and an animation duration by a function.
     @State private var animToggleArray: [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false]
 
     let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
@@ -36,7 +38,8 @@ struct LyricsPlayerView: View {
                                 Text(lyric)
                                     .id(index)
                                     .scaleEffect(index == count ? 1.1 : 1)
-
+                                
+//Basic animation. Note that the ternary refers to the [Bool].
                                     .scaleEffect(animToggleArray[index] && index != count ? 1.06 : 1)
 
                                     .font(.largeTitle)
@@ -61,7 +64,10 @@ struct LyricsPlayerView: View {
                             .onChange(of: self.count) { count in
                                 withAnimation {
                                 isChangingLyric = false
+                                    
+//The function that handles the animation is called whenever count changes.
                                 delayLyrics(count)
+                                    
                                proxy.scrollTo(count, anchor: .top)
                                 
                             }
@@ -87,6 +93,7 @@ struct LyricsPlayerView: View {
         }
     }
 
+//DispatchQueue is used to delay the booleans value changes in animToggleArray.
     func delayLyrics(_ count: Int) {
         func delayLyric(_ cpt: Int) {
             let interval = 0.3
@@ -98,6 +105,8 @@ struct LyricsPlayerView: View {
             }
             self.animToggleArray[cpt].toggle()
         }
+       
+//Only 5 lyrics after the focused ones are changed.
         for cpt in count...(count+5<music.lyrics.count ? count+5 : music.lyrics.count-1) {
             delayLyric(cpt);
         }
